@@ -8,16 +8,31 @@ import Footer from './Footer';
 
 // 2. crear la clase
 class Application extends Component {
+    state = {
+        products : []
+    };
 
-    // 3.asegurar que exista render
-    render(){
+    componentDidMount() {
+
         const products = [
             {nombre: 'libro', precio: 200},
             {nombre: 'Disco de muscia', precio: 100},
             {nombre: 'Guitarra', precio: 800},
             {nombre: 'Reproductor', precio: 1200},
-            {nombre: 'Album', precio: 500}
+            {nombre: 'Album', precio: 500}        
         ]
+        
+        setTimeout(() => {
+            
+        this.setState({
+                products : products
+            });
+        }, 3000);
+    }
+
+    // 3.asegurar que exista render
+    render(){
+        
         return (
             <div>
                 <Header 
@@ -25,7 +40,7 @@ class Application extends Component {
                 />
                 <h1>Tienda Virtual (APP)</h1>
                 <Products
-                    products = {products}
+                    products = {this.state.products}
                 />
                 <Footer />
             </div>
